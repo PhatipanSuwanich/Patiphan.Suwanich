@@ -4,6 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../widgets/bloglink.dart';
+import '../widgets/textlink.dart';
 import '../widgets/timeline.dart';
 
 class Home extends StatefulWidget {
@@ -92,7 +95,9 @@ class _HomeState extends State<Home> {
                 ),
               ),
             Container(
-              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? EdgeInsets.fromLTRB(200,200,200,0) : EdgeInsets.fromLTRB(50,100,50,0),
+              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                  ? EdgeInsets.fromLTRB(200, 200, 200, 0)
+                  : EdgeInsets.fromLTRB(50, 100, 50, 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,14 +110,33 @@ class _HomeState extends State<Home> {
                     height: 30,
                   ),
                   Timeline(
-                    itemGap:30,
+                    itemGap: 30,
                     gutterSpacing: 20,
                     children: <Widget>[
-                      detailOfTimeline(title: 'King Mongkut’s Institute of Technology Ladkrabang (Bangkok, Thailand)', detail: 'Bangkok, Thailand Bachelor of Science, Computer Science, May 2019 GPA 2.95'),
-                      detailOfTimeline(title: 'Krungsri Head Office at rama 3 (July 2019 – February 2021)', detail: 'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable. • Manage and build app packages android and ios for publish an app on store. • Create a RESTful API to handle LINE notifications from Alertmanager. • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
-                      detailOfTimeline(title: 'Major Development PCL. at major tower (February 2021 - August 2021)', detail: 'Developed cross-platform application “Major lifescape” and “Lifescape”, an application for owner or tenant manage resources inside and outside the room of the residence and receive real-time news and notifications from legal entities.'),
-                      detailOfTimeline(title: 'Fillgoods Technology Co., Ltd. (September 2021 - November 2021)', detail: 'Developed cross-platform application for retail stores'),
-                      detailOfTimeline(title: 'Full Time Trader (November 2021 - Now)', detail: 'Full-time trader cryptocurrency and gamer of NFT game'),
+                      detailOfTimeline(
+                          title:
+                              'King Mongkut’s Institute of Technology Ladkrabang (Bangkok, Thailand)',
+                          detail:
+                              'Bangkok, Thailand Bachelor of Science, Computer Science, May 2019 GPA 2.95'),
+                      detailOfTimeline(
+                          title:
+                              'Krungsri Head Office at rama 3 (July 2019 – February 2021)',
+                          detail:
+                              'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable. • Manage and build app packages android and ios for publish an app on store. • Create a RESTful API to handle LINE notifications from Alertmanager. • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
+                      detailOfTimeline(
+                          title:
+                              'Major Development PCL. at major tower (February 2021 - August 2021)',
+                          detail:
+                              'Developed cross-platform application “Major lifescape” and “Lifescape”, an application for owner or tenant manage resources inside and outside the room of the residence and receive real-time news and notifications from legal entities.'),
+                      detailOfTimeline(
+                          title:
+                              'Fillgoods Technology Co., Ltd. (September 2021 - November 2021)',
+                          detail:
+                              'Developed cross-platform application for retail stores'),
+                      detailOfTimeline(
+                          title: 'Full Time Trader (November 2021 - Now)',
+                          detail:
+                              'Full-time trader cryptocurrency and gamer of NFT game'),
                     ],
                     indicators: <Widget>[
                       Icon(Icons.circle),
@@ -126,13 +150,45 @@ class _HomeState extends State<Home> {
               ),
             ),
             Container(
-              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? EdgeInsets.fromLTRB(200,200,200,0) : EdgeInsets.fromLTRB(50,100,50,0),
-              child: GridView(
-                gridDelegate: null,
+              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                  ? EdgeInsets.fromLTRB(200, 200, 200, 0)
+                  : EdgeInsets.fromLTRB(50, 100, 50, 0),
+              child: Column(
                 children: [
                   Text(
                     "Project.",
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 30),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount:
+                        ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                            ? 2
+                            : 1,
+                    mainAxisSpacing: 100,
+                    crossAxisSpacing: 70,
+                    children: [
+                      // BlogLink(
+                      //   "Oxford list word translation game",
+                      //   "3000 words oxford vocabulary app.",
+                      //   "images/oxford.PNG",
+                      //   onTap: () =>
+                      //       _launchURL("https://oxford3000-a201f.web.app"),
+                      // ),
+                      BlogLink(
+                        "Oxford list word translation game",
+                        "3000 words oxford vocabulary app.",
+                        "images/oxford.PNG",
+                        onTap: () =>
+                            _launchURL("https://oxford3000-a201f.web.app"),
+                      ),
+                      Container(color: Colors.teal),
+                      Container(color: Colors.teal),
+                      Container(color: Colors.grey),
+                      Container(color: Colors.grey),
+                      Container(color: Colors.teal),
+                    ],
                   ),
                 ],
               ),
@@ -156,19 +212,15 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Container detailOfTimeline({required String title,required String detail}) {
+  Container detailOfTimeline({required String title, required String detail}) {
     return Container(
         child: Text.rich(
       TextSpan(
         children: [
           TextSpan(
-              text:
-                  '${title}\n',
-              style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold)),
-          TextSpan(
-            text: detail,
-              style: TextStyle(fontSize: 18)
-          ),
+              text: '${title}\n',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          TextSpan(text: detail, style: TextStyle(fontSize: 18)),
         ],
       ),
     ));
@@ -256,21 +308,18 @@ class _HomeState extends State<Home> {
                     IconButton(
                         icon: FaIcon(FontAwesomeIcons.linkedinIn,
                             color: Colors.white),
-                        onPressed: () {
-                          print("linkedinIn");
-                        }),
+                        onPressed: () => _launchURL(
+                            "https://www.linkedin.com/in/patiphan-suwanich-a0203a195")),
                     IconButton(
                         icon: FaIcon(FontAwesomeIcons.github,
                             color: Colors.white),
-                        onPressed: () {
-                          print("github");
-                        }),
+                        onPressed: () =>
+                            _launchURL("https://github.com/PhatipanSuwanich")),
                     IconButton(
                         icon: FaIcon(FontAwesomeIcons.medium,
                             color: Colors.white),
-                        onPressed: () {
-                          print("medium");
-                        })
+                        onPressed: () =>
+                            _launchURL("https://benzdroid.medium.com"))
                   ]),
             )
           ],
@@ -293,5 +342,9 @@ class _HomeState extends State<Home> {
         _showBackToTopButton = false;
       });
     });
+  }
+
+  void _launchURL(_url) async {
+    if (!await launch(_url)) throw 'Could not launch $_url';
   }
 }
