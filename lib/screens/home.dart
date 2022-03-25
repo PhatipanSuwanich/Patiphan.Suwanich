@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import '../widgets/timeline.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -91,35 +92,49 @@ class _HomeState extends State<Home> {
                 ),
               ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              // height: double.maxFinite,
+              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? EdgeInsets.fromLTRB(200,200,200,0) : EdgeInsets.fromLTRB(50,100,50,0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 30),
                   Text(
-                    "Experience",
-                    style: TextStyle(
-                        fontSize: 50, fontWeight: FontWeight.bold),
+                    "Education and Experience.",
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 100,
-                    child: VerticalDivider(
-                      color: Colors.black,
-                      thickness: 2,
-                    ),
-                  )
+                    height: 30,
+                  ),
+                  Timeline(
+                    itemGap:30,
+                    gutterSpacing: 20,
+                    children: <Widget>[
+                      detailOfTimeline(title: 'King Mongkut’s Institute of Technology Ladkrabang (Bangkok, Thailand)', detail: 'Bangkok, Thailand Bachelor of Science, Computer Science, May 2019 GPA 2.95'),
+                      detailOfTimeline(title: 'Krungsri Head Office at rama 3 (July 2019 – February 2021)', detail: 'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable. • Manage and build app packages android and ios for publish an app on store. • Create a RESTful API to handle LINE notifications from Alertmanager. • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
+                      detailOfTimeline(title: 'Major Development PCL. at major tower (February 2021 - August 2021)', detail: 'Developed cross-platform application “Major lifescape” and “Lifescape”, an application for owner or tenant manage resources inside and outside the room of the residence and receive real-time news and notifications from legal entities.'),
+                      detailOfTimeline(title: 'Fillgoods Technology Co., Ltd. (September 2021 - November 2021)', detail: 'Developed cross-platform application for retail stores'),
+                      detailOfTimeline(title: 'Full Time Trader (November 2021 - Now)', detail: 'Full-time trader cryptocurrency and gamer of NFT game'),
+                    ],
+                    indicators: <Widget>[
+                      Icon(Icons.circle),
+                      Icon(Icons.circle),
+                      Icon(Icons.circle),
+                      Icon(Icons.circle),
+                      Icon(Icons.circle),
+                    ],
+                  ),
                 ],
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              // height: double.maxFinite,
-              child: Center(
-                child: Text(
-                  "TEST",
-                ),
+              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? EdgeInsets.fromLTRB(200,200,200,0) : EdgeInsets.fromLTRB(50,100,50,0),
+              child: GridView(
+                gridDelegate: null,
+                children: [
+                  Text(
+                    "Project.",
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ),
             Container(
@@ -141,113 +156,127 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Container detailOfTimeline({required String title,required String detail}) {
+    return Container(
+        child: Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+              text:
+                  '${title}\n',
+              style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold)),
+          TextSpan(
+            text: detail,
+              style: TextStyle(fontSize: 18)
+          ),
+        ],
+      ),
+    ));
+  }
+
   SizedBox miniMe() {
     return SizedBox(
-                    width: 370,
-                    height: 400,
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 20),
-                        Text(
-                          "Hello",
-                          style: TextStyle(
-                              fontSize: 100, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Here's who I am & what I do",
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 40,
-                          width: 400,
-                          child: Divider(
-                            thickness: 3,
-                            endIndent: 0,
-                            color: Colors.brown,
-                          ),
-                        ),
-                        Text(
-                          "My main areas of expertise include Flutter, Ethereum, Vue, Line Liff, Spring Boot",
-                          style: TextStyle(fontSize: 24),
-                        ),
-                        Spacer(),
-                      ],
-                    ),
-                  );
+      width: 370,
+      height: 400,
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 20),
+          Text(
+            "Hello",
+            style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "Here's who I am & what I do",
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 40,
+            width: 400,
+            child: Divider(
+              thickness: 3,
+              endIndent: 0,
+              color: Colors.brown,
+            ),
+          ),
+          Text(
+            "My main areas of expertise include Flutter, Ethereum, Vue, Line Liff, Spring Boot",
+            style: TextStyle(fontSize: 24),
+          ),
+          Spacer(),
+        ],
+      ),
+    );
   }
 
   SizedBox cardProfile() {
     return SizedBox(
-                    width: 400,
-                    height: 500,
-                    child: Card(
-                      color: Colors.grey,
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Spacer(),
-                          CircleAvatar(
-                            backgroundImage: AssetImage('images/profile.jpg'),
-                            radius: 100,
-                          ),
-                          SizedBox(height: 30),
-                          Text(
-                            "Patiphan \nSuwanich",
-                            style: TextStyle(
-                                fontSize: 32, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 50,
-                            width: 100,
-                            child: Divider(
-                              height: 0,
-                              thickness: 3,
-                              endIndent: 0,
-                              color: Colors.teal,
-                            ),
-                          ),
-                          Text(
-                            "Mobile Developer",
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          Spacer(),
-                          Container(
-                            color: Colors.black,
-                            width: 400,
-                            height: 50,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                      icon: FaIcon(
-                                          FontAwesomeIcons.linkedinIn,
-                                          color: Colors.white),
-                                      onPressed: () {
-                                        print("linkedinIn");
-                                      }),
-                                  IconButton(
-                                      icon: FaIcon(FontAwesomeIcons.github,
-                                          color: Colors.white),
-                                      onPressed: () {
-                                        print("github");
-                                      }),
-                                  IconButton(
-                                      icon: FaIcon(FontAwesomeIcons.medium,
-                                          color: Colors.white),
-                                      onPressed: () {
-                                        print("medium");
-                                      })
-                                ]),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
+      width: 400,
+      height: 500,
+      child: Card(
+        color: Colors.grey,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Spacer(),
+            CircleAvatar(
+              backgroundImage: AssetImage('images/profile.jpg'),
+              radius: 100,
+            ),
+            SizedBox(height: 30),
+            Text(
+              "Patiphan \nSuwanich",
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 50,
+              width: 100,
+              child: Divider(
+                height: 0,
+                thickness: 3,
+                endIndent: 0,
+                color: Colors.teal,
+              ),
+            ),
+            Text(
+              "Mobile Developer",
+              style: TextStyle(fontSize: 24),
+            ),
+            Spacer(),
+            Container(
+              color: Colors.black,
+              width: 400,
+              height: 50,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                        icon: FaIcon(FontAwesomeIcons.linkedinIn,
+                            color: Colors.white),
+                        onPressed: () {
+                          print("linkedinIn");
+                        }),
+                    IconButton(
+                        icon: FaIcon(FontAwesomeIcons.github,
+                            color: Colors.white),
+                        onPressed: () {
+                          print("github");
+                        }),
+                    IconButton(
+                        icon: FaIcon(FontAwesomeIcons.medium,
+                            color: Colors.white),
+                        onPressed: () {
+                          print("medium");
+                        })
+                  ]),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   void _scrollToIndex(int index) {
