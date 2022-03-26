@@ -43,7 +43,7 @@ class _BlogLinkState extends State<BlogLink> {
                 fit: BoxFit.fitHeight,
               ),
             ),
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 200),
           ),
           Positioned(
             bottom: -30.0,

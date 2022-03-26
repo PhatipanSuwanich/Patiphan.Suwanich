@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
           scrollDirection: Axis.vertical,
           controller: controller,
           children: <Widget>[
-            SizedBox(height: 20),
+            SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 110 : 50),
             if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
               Container(
                 child: Row(
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                   // mainAxisSize: MainAxisSize.max,
                   children: [
                     cardProfile(),
-                    SizedBox(width: 30),
+                    SizedBox(width: 10),
                     miniMe(),
                   ],
                 ),
@@ -96,13 +96,14 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+            SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 110 : 20),
             AutoScrollTag(
               key: ValueKey(1),
               controller: controller,
               index: 1,
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? EdgeInsets.fromLTRB(200, 250, 200, 0)
+                    ? EdgeInsets.fromLTRB(220, 70, 200, 0)
                     : EdgeInsets.fromLTRB(50, 70, 50, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -157,13 +158,14 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 120 : 20),
             AutoScrollTag(
               key: ValueKey(2),
               controller: controller,
               index: 2,
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? EdgeInsets.fromLTRB(200, 250, 200, 0)
+                    ? EdgeInsets.fromLTRB(220, 40, 200, 0)
                     : EdgeInsets.fromLTRB(50, 50, 50, 0),
                 child: Column(
                   children: [
@@ -171,7 +173,7 @@ class _HomeState extends State<Home> {
                       "Project.",
                       style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 90 : 20),
                     GridView.count(
                       shrinkWrap: true,
                       crossAxisCount:
@@ -239,8 +241,8 @@ class _HomeState extends State<Home> {
     ));
   }
 
-  SizedBox miniMe() {
-    return SizedBox(
+  Widget miniMe() {
+    return Container(
       width: 370,
       height: 310,
       child: Column(
