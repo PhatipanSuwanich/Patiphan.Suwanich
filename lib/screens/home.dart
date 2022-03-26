@@ -43,14 +43,13 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
         title: Row(
           children: <Widget>[
             Container(
               width: 50,
               height: 50,
               margin: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(10)),
             ),
             Spacer(),
             Row(
@@ -82,7 +81,7 @@ class _HomeState extends State<Home> {
                   // mainAxisSize: MainAxisSize.max,
                   children: [
                     cardProfile(),
-                    SizedBox(width: 10),
+                    SizedBox(width: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 80 : 10),
                     miniMe(),
                   ],
                 ),
@@ -193,7 +192,7 @@ class _HomeState extends State<Home> {
                         BlogLink(
                           "Oxford list word translation game",
                           "3000 words oxford vocabulary app.",
-                          "images/oxford.PNG",
+                          "assets/images/oxford.PNG",
                           onTap: () =>
                               _launchURL("https://oxford3000-a201f.web.app"),
                         ),
@@ -264,7 +263,7 @@ class _HomeState extends State<Home> {
             child: Divider(
               thickness: 3,
               endIndent: 0,
-              color: Colors.brown,
+              color: Colors.blueGrey,
             ),
           ),
           Text(
@@ -282,6 +281,8 @@ class _HomeState extends State<Home> {
       width: 400,
       height: 500,
       child: Card(
+        elevation: 70,
+        shadowColor: Colors.blueGrey,
         color: Colors.grey,
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
@@ -289,7 +290,7 @@ class _HomeState extends State<Home> {
           children: [
             Spacer(),
             CircleAvatar(
-              backgroundImage: AssetImage('images/profile.jpg'),
+              backgroundImage: AssetImage('assets/images/profile.jpg'),
               radius: 100,
             ),
             SizedBox(height: 30),
@@ -304,7 +305,7 @@ class _HomeState extends State<Home> {
                 height: 0,
                 thickness: 3,
                 endIndent: 0,
-                color: Colors.teal,
+                color: Colors.blueGrey,
               ),
             ),
             Text(
