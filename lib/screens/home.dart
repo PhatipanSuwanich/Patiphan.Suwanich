@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/bloglink.dart';
 import '../widgets/textlink.dart';
@@ -21,14 +22,15 @@ class _HomeState extends State<Home> {
   bool _showBackToTopButton = false;
 
   var list = ["Home", "About me", "My Projects", "My blog"];
-  var colors = [Colors.orange, Colors.blue, Colors.red, Colors.green];
 
-  PageController controller = PageController();
+  late AutoScrollController controller;
 
   @override
   void initState() {
+    controller = AutoScrollController();
+
     controller.addListener(() {
-      if (controller.page! >= 1 && _showBackToTopButton == false) {
+      if (controller.offset >= 1500 && _showBackToTopButton == false) {
         setState(() {
           _showBackToTopButton = true; // show the back-to-top button
         });
@@ -71,7 +73,7 @@ class _HomeState extends State<Home> {
           scrollDirection: Axis.vertical,
           controller: controller,
           children: <Widget>[
-            SizedBox(height: 100),
+            SizedBox(height: 20),
             if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
               Container(
                 child: Row(
@@ -94,103 +96,114 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-            Container(
-              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                  ? EdgeInsets.fromLTRB(200, 200, 200, 0)
-                  : EdgeInsets.fromLTRB(50, 100, 50, 0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Education and Experience.",
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Timeline(
-                    itemGap: 30,
-                    gutterSpacing: 20,
-                    children: <Widget>[
-                      detailOfTimeline(
-                          title:
-                              'King Mongkut’s Institute of Technology Ladkrabang (Bangkok, Thailand)',
-                          detail:
-                              'Bangkok, Thailand Bachelor of Science, Computer Science, May 2019 GPA 2.95'),
-                      detailOfTimeline(
-                          title:
-                              'Krungsri Head Office at rama 3 (July 2019 – February 2021)',
-                          detail:
-                              'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable. • Manage and build app packages android and ios for publish an app on store. • Create a RESTful API to handle LINE notifications from Alertmanager. • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
-                      detailOfTimeline(
-                          title:
-                              'Major Development PCL. at major tower (February 2021 - August 2021)',
-                          detail:
-                              'Developed cross-platform application “Major lifescape” and “Lifescape”, an application for owner or tenant manage resources inside and outside the room of the residence and receive real-time news and notifications from legal entities.'),
-                      detailOfTimeline(
-                          title:
-                              'Fillgoods Technology Co., Ltd. (September 2021 - November 2021)',
-                          detail:
-                              'Developed cross-platform application for retail stores'),
-                      detailOfTimeline(
-                          title: 'Full Time Trader (November 2021 - Now)',
-                          detail:
-                              'Full-time trader cryptocurrency and gamer of NFT game'),
-                    ],
-                    indicators: <Widget>[
-                      Icon(Icons.circle),
-                      Icon(Icons.circle),
-                      Icon(Icons.circle),
-                      Icon(Icons.circle),
-                      Icon(Icons.circle),
-                    ],
-                  ),
-                ],
+            AutoScrollTag(
+              key: ValueKey(1),
+              controller: controller,
+              index: 1,
+              child: Container(
+                padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? EdgeInsets.fromLTRB(200, 250, 200, 0)
+                    : EdgeInsets.fromLTRB(50, 70, 50, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Education and Experience.",
+                      style:
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Timeline(
+                      itemGap: 30,
+                      gutterSpacing: 20,
+                      children: <Widget>[
+                        detailOfTimeline(
+                            title:
+                                'King Mongkut’s Institute of Technology Ladkrabang (Bangkok, Thailand)',
+                            detail:
+                                'Bangkok, Thailand Bachelor of Science, Computer Science, May 2019 GPA 2.95'),
+                        detailOfTimeline(
+                            title:
+                                'Krungsri Head Office at rama 3 (July 2019 – February 2021)',
+                            detail:
+                                'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable. • Manage and build app packages android and ios for publish an app on store. • Create a RESTful API to handle LINE notifications from Alertmanager. • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
+                        detailOfTimeline(
+                            title:
+                                'Major Development PCL. at major tower (February 2021 - August 2021)',
+                            detail:
+                                'Developed cross-platform application “Major lifescape” and “Lifescape”, an application for owner or tenant manage resources inside and outside the room of the residence and receive real-time news and notifications from legal entities.'),
+                        detailOfTimeline(
+                            title:
+                                'Fillgoods Technology Co., Ltd. (September 2021 - November 2021)',
+                            detail:
+                                'Developed cross-platform application for retail stores'),
+                        detailOfTimeline(
+                            title: 'Full Time Trader (November 2021 - Now)',
+                            detail:
+                                'Full-time trader cryptocurrency and gamer of NFT game'),
+                      ],
+                      indicators: <Widget>[
+                        Icon(Icons.circle),
+                        Icon(Icons.circle),
+                        Icon(Icons.circle),
+                        Icon(Icons.circle),
+                        Icon(Icons.circle),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-            Container(
-              padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                  ? EdgeInsets.fromLTRB(200, 200, 200, 0)
-                  : EdgeInsets.fromLTRB(50, 100, 50, 0),
-              child: Column(
-                children: [
-                  Text(
-                    "Project.",
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 30),
-                  GridView.count(
-                    shrinkWrap: true,
-                    crossAxisCount:
-                        ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                            ? 2
-                            : 1,
-                    mainAxisSpacing: 100,
-                    crossAxisSpacing: 70,
-                    children: [
-                      // BlogLink(
-                      //   "Oxford list word translation game",
-                      //   "3000 words oxford vocabulary app.",
-                      //   "images/oxford.PNG",
-                      //   onTap: () =>
-                      //       _launchURL("https://oxford3000-a201f.web.app"),
-                      // ),
-                      BlogLink(
-                        "Oxford list word translation game",
-                        "3000 words oxford vocabulary app.",
-                        "images/oxford.PNG",
-                        onTap: () =>
-                            _launchURL("https://oxford3000-a201f.web.app"),
-                      ),
-                      Container(color: Colors.teal),
-                      Container(color: Colors.teal),
-                      Container(color: Colors.grey),
-                      Container(color: Colors.grey),
-                      Container(color: Colors.teal),
-                    ],
-                  ),
-                ],
+            AutoScrollTag(
+              key: ValueKey(2),
+              controller: controller,
+              index: 2,
+              child: Container(
+                padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? EdgeInsets.fromLTRB(200, 250, 200, 0)
+                    : EdgeInsets.fromLTRB(50, 50, 50, 0),
+                child: Column(
+                  children: [
+                    Text(
+                      "Project.",
+                      style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 30),
+                    GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount:
+                          ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                              ? 2
+                              : 1,
+                      mainAxisSpacing: 100,
+                      crossAxisSpacing: 70,
+                      children: [
+                        // BlogLink(
+                        //   "Oxford list word translation game",
+                        //   "3000 words oxford vocabulary app.",
+                        //   "images/oxford.PNG",
+                        //   onTap: () =>
+                        //       _launchURL("https://oxford3000-a201f.web.app"),
+                        // ),
+                        BlogLink(
+                          "Oxford list word translation game",
+                          "3000 words oxford vocabulary app.",
+                          "images/oxford.PNG",
+                          onTap: () =>
+                              _launchURL("https://oxford3000-a201f.web.app"),
+                        ),
+                        Container(color: Colors.teal),
+                        Container(color: Colors.teal),
+                        Container(color: Colors.grey),
+                        Container(color: Colors.grey),
+                        Container(color: Colors.teal),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -229,7 +242,7 @@ class _HomeState extends State<Home> {
   SizedBox miniMe() {
     return SizedBox(
       width: 370,
-      height: 400,
+      height: 310,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -329,8 +342,9 @@ class _HomeState extends State<Home> {
   }
 
   void _scrollToIndex(int index) {
-    controller.animateToPage(index + 1,
-        duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+    controller.scrollToIndex(index + 1,
+        duration: Duration(seconds: 1),
+        preferPosition: AutoScrollPosition.begin);
   }
 
   // This function is triggered when the user presses the back-to-top button
