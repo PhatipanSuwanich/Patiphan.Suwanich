@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   // this variable determnines whether the back-to-top button is shown or not
   bool _showBackToTopButton = false;
 
-  var list = ["Home", "About me", "My Projects", "My blog"];
+  var list = ["Home", "Skills", "About me", "My Projects", "My blog"];
 
   late AutoScrollController controller;
 
@@ -72,7 +72,10 @@ class _HomeState extends State<Home> {
           scrollDirection: Axis.vertical,
           controller: controller,
           children: <Widget>[
-            SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 110 : 50),
+            SizedBox(
+                height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? 110
+                    : 50),
             if (ResponsiveWrapper.of(context).isLargerThan(MOBILE))
               Container(
                 child: Row(
@@ -81,7 +84,11 @@ class _HomeState extends State<Home> {
                   // mainAxisSize: MainAxisSize.max,
                   children: [
                     cardProfile(),
-                    SizedBox(width: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 80 : 10),
+                    SizedBox(
+                        width:
+                            ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                                ? 80
+                                : 10),
                     miniMe(),
                   ],
                 ),
@@ -95,15 +102,108 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-            SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 110 : 20),
+            SizedBox(
+                height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? 110
+                    : 100),
             AutoScrollTag(
               key: ValueKey(1),
               controller: controller,
               index: 1,
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? EdgeInsets.fromLTRB(0, 60, 0, 0)
+                    : EdgeInsets.fromLTRB(0, 40, 0, 0),
+                child: Column(
+                  children: [
+                    Text(
+                      "Skills.",
+                      style:
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 40),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 40),
+                              blockSkill("Programming:", [
+                                "Java",
+                                "Dart",
+                                "Solidity",
+                                "Kotlin",
+                                "JavaScript"
+                              ]),
+                              SizedBox(width: 40),
+                              blockSkill("Operating Systems:", [
+                                "Flutter",
+                                "Ethereum",
+                                "Vue",
+                                "Line Liff",
+                                "Spring Boot"
+                              ]),
+                              SizedBox(width: 40),
+                              blockSkill("Tools:", [
+                                "Android Studio",
+                                "Visual Studio Code",
+                                "ReMix",
+                                "Intellij",
+                                "Jira",
+                                "Zeplin"
+                              ]),
+                            ],
+                          ),
+                          // SizedBox(height: 40),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 40),
+                              blockSkill("Operating Systems:", [
+                                "Microsoft Windows",
+                                "Mac-OSX",
+                                "",
+                                "",
+                                "",
+                                ""
+                              ]),
+                              SizedBox(width: 40),
+                              blockSkill("Databases:",
+                                  ["Firebase", "My SQL", "SQLite", "", ""]),
+                              SizedBox(width: 40),
+                              blockSkill("Video Game:", [
+                                "Thetan Arena",
+                                "ROV",
+                                "Dota 2",
+                                "Far Cry",
+                                "Dying Light",
+                                "Grand Theft Auto"
+                              ]),
+                            ],
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+                height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? 80
+                    : 30),
+            AutoScrollTag(
+              key: ValueKey(2),
+              controller: controller,
+              index: 2,
+              child: Container(
+                padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
                     ? EdgeInsets.fromLTRB(220, 70, 200, 0)
-                    : EdgeInsets.fromLTRB(50, 70, 50, 0),
+                    : EdgeInsets.fromLTRB(50, 50, 50, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -157,22 +257,30 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 120 : 20),
+            SizedBox(
+                height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? 120
+                    : 20),
             AutoScrollTag(
-              key: ValueKey(2),
+              key: ValueKey(3),
               controller: controller,
-              index: 2,
+              index: 3,
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? EdgeInsets.fromLTRB(220, 40, 200, 0)
-                    : EdgeInsets.fromLTRB(50, 50, 50, 0),
+                    ? EdgeInsets.fromLTRB(200, 40, 200, 0)
+                    : EdgeInsets.fromLTRB(70, 50, 200, 0),
                 child: Column(
                   children: [
                     Text(
                       "Project.",
-                      style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: ResponsiveWrapper.of(context).isLargerThan(TABLET) ? 90 : 20),
+                    SizedBox(
+                        height:
+                            ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                                ? 90
+                                : 20),
                     GridView.count(
                       shrinkWrap: true,
                       crossAxisCount:
@@ -180,7 +288,10 @@ class _HomeState extends State<Home> {
                               ? 2
                               : 1,
                       mainAxisSpacing: 100,
-                      crossAxisSpacing: 70,
+                      crossAxisSpacing:
+                          ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                              ? 30
+                              : 50,
                       children: [
                         // BlogLink(
                         //   "Oxford list word translation game",
@@ -207,15 +318,6 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              // height: double.maxFinite,
-              child: Center(
-                child: Text(
-                  "TEST",
-                ),
-              ),
-            )
           ]),
       floatingActionButton: _showBackToTopButton == false
           ? null
@@ -223,6 +325,51 @@ class _HomeState extends State<Home> {
               onPressed: _scrollToTop,
               child: Icon(Icons.arrow_upward),
             ),
+    );
+  }
+
+  Widget blockSkill(title, List<String> skills) {
+    return Container(
+      width: 250,
+      height: 230,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                    text: '${title}\n',
+                    style:
+                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                TextSpan(
+                    text: "${skills[0]}\n",
+                    style: TextStyle(height: 2, fontSize: 18)),
+                TextSpan(
+                    text: "${skills[1]}\n",
+                    style: TextStyle(height: 1.7, fontSize: 18)),
+                TextSpan(
+                    text: "${skills[2]}\n",
+                    style: TextStyle(height: 1.7, fontSize: 18)),
+                TextSpan(
+                    text: "${skills[3]}\n",
+                    style: TextStyle(height: 1.7, fontSize: 18)),
+                TextSpan(
+                    text: "${skills[4]}",
+                    style: TextStyle(height: 1.7, fontSize: 18)),
+              ],
+            ),
+          ),
+          // Text("Programming Languages:",
+          //     style: TextStyle(
+          //         fontSize: 24, fontWeight: FontWeight.bold)),
+          Container(color: Colors.teal),
+          Container(color: Colors.grey),
+          Container(color: Colors.grey),
+          Container(color: Colors.teal),
+        ],
+      ),
     );
   }
 
