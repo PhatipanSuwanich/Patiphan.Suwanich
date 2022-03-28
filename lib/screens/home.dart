@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
             ),
             Spacer(),
             Row(
-              children: List.generate(3, (index) {
+              children: List.generate(4, (index) {
                 return GestureDetector(
                   onTap: () {
                     _scrollToIndex(index);
@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
               ),
             SizedBox(
                 height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? 110
+                    ? 130
                     : 100),
             AutoScrollTag(
               key: ValueKey(1),
@@ -113,11 +113,13 @@ class _HomeState extends State<Home> {
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
                     ? EdgeInsets.fromLTRB(0, 60, 0, 0)
-                    : EdgeInsets.fromLTRB(0, 40, 0, 0),
+                    : EdgeInsets.fromLTRB(50, 40, 0, 0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Skills.",
+                      "My skills.",
                       style:
                           TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
@@ -127,10 +129,9 @@ class _HomeState extends State<Home> {
                       child: Column(
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(width: 40),
                               blockSkill("Programming:", [
                                 "Java",
                                 "Dart",
@@ -157,12 +158,11 @@ class _HomeState extends State<Home> {
                               ]),
                             ],
                           ),
-                          // SizedBox(height: 40),
+                          SizedBox(height: 40),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(width: 40),
                               blockSkill("Operating Systems:", [
                                 "Microsoft Windows",
                                 "Mac-OSX",
@@ -194,7 +194,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(
                 height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? 80
+                    ? 110
                     : 30),
             AutoScrollTag(
               key: ValueKey(2),
@@ -274,45 +274,103 @@ class _HomeState extends State<Home> {
                     Text(
                       "Project.",
                       style:
+                      TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                        height:
+                        ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                            ? 40
+                            : 20),
+
+                  ],
+                ),
+              ),
+            ),
+            AutoScrollTag(
+              key: ValueKey(4),
+              controller: controller,
+              index: 4,
+              child: Container(
+                padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? EdgeInsets.fromLTRB(200, 40, 200, 100)
+                    : EdgeInsets.fromLTRB(70, 50, 200, 100),
+                child: Column(
+                  children: [
+                    Text(
+                      "Posts & Articles.",
+                      style:
                           TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                         height:
                             ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                                ? 90
+                                ? 40
                                 : 20),
                     GridView.count(
                       shrinkWrap: true,
                       crossAxisCount:
                           ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                              ? 2
+                              ? 3
                               : 1,
-                      mainAxisSpacing: 100,
+                      mainAxisSpacing: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                          ? 30 : 20,
                       crossAxisSpacing:
                           ResponsiveWrapper.of(context).isLargerThan(TABLET)
                               ? 30
                               : 50,
                       children: [
-                        // BlogLink(
-                        //   "Oxford list word translation game",
-                        //   "3000 words oxford vocabulary app.",
-                        //   "images/oxford.PNG",
-                        //   onTap: () =>
-                        //       _launchURL("https://oxford3000-a201f.web.app"),
-                        // ),
                         BlogLink(
-                          "Oxford list word translation game",
-                          "3000 words oxford vocabulary app.",
-                          "assets/images/oxford.PNG",
+                          "ออมดิจิทัลทางเลือกใหม่ สำหรับคนที่อยากได้ดอกสูงๆ",
+                          "Kept | Krungsri | Finance",
+                          "https://miro.medium.com/max/1400/1*oQdoRLo2YMu-Xq7_4AQnEg.png",
                           onTap: () =>
-                              _launchURL("https://oxford3000-a201f.web.app"),
+                              _launchURL("https://benzdroid.medium.com/ออมดิจิทัลทางเลือกใหม่-สำหรับคนที่อยากได้ดอกสูงๆ-แต่ไม่อยากฝากประจำ-90ec2099e05d"),
                         ),
-                        Container(color: Colors.teal),
-                        Container(color: Colors.teal),
-                        Container(color: Colors.grey),
-                        Container(color: Colors.grey),
-                        Container(color: Colors.teal),
+                        BlogLink(
+                          "อยากเทรด Bitcoin แต่ไม่รู้อะไรเลย",
+                          "Bitcoin | Cytocerency | BlockChain",
+                          "https://miro.medium.com/max/1400/1*j8P31kDtHGFR0PfQnBt93A.png",
+                          onTap: () =>
+                              _launchURL("https://benzdroid.medium.com/อยากเทรด-bitcoin-แต่ไม่รู้อะไรเลย-67cabcc2266a"),
+                        ),
+                        BlogLink(
+                          "ทำ Sticker line ตั้งแต่ User จนเป็น Line Creator",
+                          "Sticker | Line | Line Creator",
+                          "https://miro.medium.com/max/1400/1*t6LZ6BH4bschZO1zgwp-wA.jpeg",
+                          onTap: () =>
+                              _launchURL("https://benzdroid.medium.com/ขอเล่าการทำ-sticker-line-ตั้งแต่-user-จนเป็น-line-creator-b479b6f28854"),
+                        ),
+                        BlogLink(
+                          "สร้าง Scheduler Line Notify แบบไม่ต้องเขียนโค้ดสักตัว",
+                          "Line | Line Bot | Scheduling",
+                          "https://miro.medium.com/max/1400/1*GE3O81zGU96kAuzGLQsqhA.png",
+                          onTap: () =>
+                              _launchURL("https://benzdroid.medium.com/สร้าง-scheduler-line-notify-แบบไม่ต้องเขียนโค้ดสักตัว-9d1b0e2d1a90"),
+                        ),
+                        BlogLink(
+                          "ฝึกภาษา Dart ภาษาใหม่ของ Google",
+                          "Dart | Flutter | Cross-platform",
+                          "https://miro.medium.com/max/770/1*l270bycqZH-57DJtB9cVkg.png",
+                          onTap: () =>
+                              _launchURL("https://benzdroid.medium.com/ฝึกภาษา-dart-ภาษาใหม่ของ-google-85cea7221691"),
+                        ),
+                        BlogLink(
+                          "จากเด็กจบใหม่สู่นักพัฒนา Flutter #0",
+                          "Dart | Flutter | Cross-platform",
+                          "https://miro.medium.com/max/1400/1*NWmtjT5R9iVLbvT4_sZ9-Q.png",
+                          onTap: () =>
+                              _launchURL("https://benzdroid.medium.com/จากเด็กจบใหม่ที่ต้องติดบ้านเพราะโควิดสู่นักพัฒนา-flutter-0-a10e88fa453e"),
+                        ),
                       ],
+                    ),
+                    SizedBox(
+                        height:
+                        ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                            ? 40
+                            : 30),
+                    TextLink(
+                      "See more.",
+                      onTap: () => _launchURL("https://benzdroid.medium.com"),
                     ),
                   ],
                 ),
@@ -361,13 +419,6 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          // Text("Programming Languages:",
-          //     style: TextStyle(
-          //         fontSize: 24, fontWeight: FontWeight.bold)),
-          Container(color: Colors.teal),
-          Container(color: Colors.grey),
-          Container(color: Colors.grey),
-          Container(color: Colors.teal),
         ],
       ),
     );
