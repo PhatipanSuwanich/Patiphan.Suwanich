@@ -67,6 +67,10 @@ flutter:
   assets:
     - assets/images/profile.jpg
     - assets/images/oxford.PNG
+    - assets/images/kept.PNG
+    - assets/images/lifescape.PNG
+    - assets/images/resume.PNG
+    - assets/images/testament.PNG
 #     - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

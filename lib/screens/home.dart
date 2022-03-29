@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   // this variable determnines whether the back-to-top button is shown or not
   bool _showBackToTopButton = false;
 
-  var list = ["Home", "Skills", "About me", "My Projects", "My blog"];
+  var list = ["Home", "Skills", "Experience", "Projects", "My blog"];
 
   late AutoScrollController controller;
 
@@ -229,7 +229,7 @@ class _HomeState extends State<Home> {
                             title:
                                 'Krungsri Head Office at rama 3 (July 2019 – February 2021)',
                             detail:
-                                'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable. • Manage and build app packages android and ios for publish an app on store. • Create a RESTful API to handle LINE notifications from Alertmanager. • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
+                                'Developed cross-platform application “Kept”, an application for financial management to make savings simple and achievable.\n • Manage and build app packages android and ios for publish an app on store.\n • Create a RESTful API to handle LINE notifications from Alertmanager.\n • Working with tester, designer, business analyst to design feature for the fastest delivery as an agile team member.'),
                         detailOfTimeline(
                             title:
                                 'Major Development PCL. at major tower (February 2021 - August 2021)',
@@ -260,39 +260,95 @@ class _HomeState extends State<Home> {
             SizedBox(
                 height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
                     ? 120
-                    : 20),
+                    : 40),
             AutoScrollTag(
               key: ValueKey(3),
               controller: controller,
               index: 3,
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? EdgeInsets.fromLTRB(200, 40, 200, 0)
-                    : EdgeInsets.fromLTRB(70, 50, 200, 0),
+                    ? EdgeInsets.fromLTRB(100, 40, 100, 0)
+                    : EdgeInsets.fromLTRB(70, 50, 0, 0),
                 child: Column(
                   children: [
                     Text(
                       "Project.",
                       style:
-                      TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                         height:
-                        ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                            ? 40
-                            : 20),
-
+                            ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                                ? 50
+                                : 80),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        blockProject(
+                            title: "Kept – saving with your style",
+                            detail:
+                                "Sometimes the hardest thing about saving money is just getting started and making it a habit. Kept application is created to help you reach your savings mission with various tailored solutions that perfectly fit your lifestyle.",
+                            tech: "",
+                            image: 'assets/images/kept.PNG',
+                            git: "",
+                            web: "https://www.keptbykrungsri.com"),
+                        SizedBox(height: 30),
+                        blockProject(
+                            title: "Lifescape : Lifestyle & Living",
+                            detail:
+                                "Providing a new lifestyle experience for everyone. A variety of brilliant functions to fulfill your living needs.",
+                            tech: "Futter | PHP | SQL | Firebase",
+                            image: 'assets/images/lifescape.PNG',
+                            git: "",
+                            web:
+                                "https://play.google.com/store/apps/details?id=co.th.mde.majorcare&hl=th&gl=US"),
+                        SizedBox(height: 30),
+                        blockProject(
+                            title: "Oxford list word translation game",
+                            detail: "3000 words oxford vocabulary app.",
+                            tech: "Futter | Firebase",
+                            image: 'assets/images/oxford.PNG',
+                            git:
+                                "https://github.com/PhatipanSuwanich/oxford3000",
+                            web: "https://oxford3000-a201f.web.app"),
+                        SizedBox(height: 30),
+                        blockProject(
+                            title: "Decentralised-Testament",
+                            detail:
+                                "The world has now transitioned to a digital democracy, but maintaining crypto and passing it on has become challenging. It is not democratic since the seed phrase must be overseen by a lawyer.\n\nIsn't it good to have a smart contract that makes expressing your will simple, secure, and democratic?",
+                            tech: "VueJS | Ethereum | GitHub Pages",
+                            image: 'assets/images/testament.PNG',
+                            git:
+                                "https://github.com/PhatipanSuwanich/Decentralised-Testament",
+                            web:
+                                "https://phatipansuwanich.github.io/Decentralised-Testament"),
+                        SizedBox(height: 30),
+                        blockProject(
+                            title: "Resume website",
+                            detail: "My Resume website.",
+                            tech: "Futter | Firebase",
+                            image: 'assets/images/resume.PNG',
+                            git:
+                                "https://github.com/PhatipanSuwanich/Patiphan.Suwanich",
+                            web: "https://resume-3506e.web.app"),
+                      ],
+                    )
                   ],
                 ),
               ),
             ),
+            SizedBox(
+                height: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                    ? 120
+                    : 20),
             AutoScrollTag(
               key: ValueKey(4),
               controller: controller,
               index: 4,
               child: Container(
                 padding: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                    ? EdgeInsets.fromLTRB(200, 40, 200, 100)
+                    ? EdgeInsets.fromLTRB(150, 40, 100, 100)
                     : EdgeInsets.fromLTRB(70, 50, 200, 100),
                 child: Column(
                   children: [
@@ -312,8 +368,10 @@ class _HomeState extends State<Home> {
                           ResponsiveWrapper.of(context).isLargerThan(TABLET)
                               ? 3
                               : 1,
-                      mainAxisSpacing: ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                          ? 30 : 20,
+                      mainAxisSpacing:
+                          ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                              ? 30
+                              : 20,
                       crossAxisSpacing:
                           ResponsiveWrapper.of(context).isLargerThan(TABLET)
                               ? 30
@@ -323,51 +381,51 @@ class _HomeState extends State<Home> {
                           "ออมดิจิทัลทางเลือกใหม่ สำหรับคนที่อยากได้ดอกสูงๆ",
                           "Kept | Krungsri | Finance",
                           "https://miro.medium.com/max/1400/1*oQdoRLo2YMu-Xq7_4AQnEg.png",
-                          onTap: () =>
-                              _launchURL("https://benzdroid.medium.com/ออมดิจิทัลทางเลือกใหม่-สำหรับคนที่อยากได้ดอกสูงๆ-แต่ไม่อยากฝากประจำ-90ec2099e05d"),
+                          onTap: () => _launchURL(
+                              "https://benzdroid.medium.com/ออมดิจิทัลทางเลือกใหม่-สำหรับคนที่อยากได้ดอกสูงๆ-แต่ไม่อยากฝากประจำ-90ec2099e05d"),
                         ),
                         BlogLink(
                           "อยากเทรด Bitcoin แต่ไม่รู้อะไรเลย",
                           "Bitcoin | Cytocerency | BlockChain",
                           "https://miro.medium.com/max/1400/1*j8P31kDtHGFR0PfQnBt93A.png",
-                          onTap: () =>
-                              _launchURL("https://benzdroid.medium.com/อยากเทรด-bitcoin-แต่ไม่รู้อะไรเลย-67cabcc2266a"),
+                          onTap: () => _launchURL(
+                              "https://benzdroid.medium.com/อยากเทรด-bitcoin-แต่ไม่รู้อะไรเลย-67cabcc2266a"),
                         ),
                         BlogLink(
                           "ทำ Sticker line ตั้งแต่ User จนเป็น Line Creator",
                           "Sticker | Line | Line Creator",
                           "https://miro.medium.com/max/1400/1*t6LZ6BH4bschZO1zgwp-wA.jpeg",
-                          onTap: () =>
-                              _launchURL("https://benzdroid.medium.com/ขอเล่าการทำ-sticker-line-ตั้งแต่-user-จนเป็น-line-creator-b479b6f28854"),
+                          onTap: () => _launchURL(
+                              "https://benzdroid.medium.com/ขอเล่าการทำ-sticker-line-ตั้งแต่-user-จนเป็น-line-creator-b479b6f28854"),
                         ),
                         BlogLink(
                           "สร้าง Scheduler Line Notify แบบไม่ต้องเขียนโค้ดสักตัว",
                           "Line | Line Bot | Scheduling",
                           "https://miro.medium.com/max/1400/1*GE3O81zGU96kAuzGLQsqhA.png",
-                          onTap: () =>
-                              _launchURL("https://benzdroid.medium.com/สร้าง-scheduler-line-notify-แบบไม่ต้องเขียนโค้ดสักตัว-9d1b0e2d1a90"),
+                          onTap: () => _launchURL(
+                              "https://benzdroid.medium.com/สร้าง-scheduler-line-notify-แบบไม่ต้องเขียนโค้ดสักตัว-9d1b0e2d1a90"),
                         ),
                         BlogLink(
                           "ฝึกภาษา Dart ภาษาใหม่ของ Google",
                           "Dart | Flutter | Cross-platform",
                           "https://miro.medium.com/max/770/1*l270bycqZH-57DJtB9cVkg.png",
-                          onTap: () =>
-                              _launchURL("https://benzdroid.medium.com/ฝึกภาษา-dart-ภาษาใหม่ของ-google-85cea7221691"),
+                          onTap: () => _launchURL(
+                              "https://benzdroid.medium.com/ฝึกภาษา-dart-ภาษาใหม่ของ-google-85cea7221691"),
                         ),
                         BlogLink(
-                          "จากเด็กจบใหม่สู่นักพัฒนา Flutter #0",
+                          "Intro screen in Flutter",
                           "Dart | Flutter | Cross-platform",
-                          "https://miro.medium.com/max/1400/1*NWmtjT5R9iVLbvT4_sZ9-Q.png",
-                          onTap: () =>
-                              _launchURL("https://benzdroid.medium.com/จากเด็กจบใหม่ที่ต้องติดบ้านเพราะโควิดสู่นักพัฒนา-flutter-0-a10e88fa453e"),
+                          "https://miro.medium.com/max/1400/1*3AJ_hcXcaXkkVT4LIlJ7Fg.png",
+                          onTap: () => _launchURL(
+                              "https://benzdroid.medium.com/intro-screen-in-flutter-2ba5822bcd0a"),
                         ),
                       ],
                     ),
                     SizedBox(
                         height:
-                        ResponsiveWrapper.of(context).isLargerThan(TABLET)
-                            ? 40
-                            : 30),
+                            ResponsiveWrapper.of(context).isLargerThan(TABLET)
+                                ? 40
+                                : 30),
                     TextLink(
                       "See more.",
                       onTap: () => _launchURL("https://benzdroid.medium.com"),
@@ -383,6 +441,92 @@ class _HomeState extends State<Home> {
               onPressed: _scrollToTop,
               child: Icon(Icons.arrow_upward),
             ),
+    );
+  }
+
+  Row blockProject(
+      {required String title,
+      required String detail,
+      required String tech,
+      required String image,
+      required String git,
+      required String web}) {
+    return Row(
+      mainAxisAlignment: ResponsiveWrapper.of(context).isLargerThan(TABLET)
+          ? MainAxisAlignment.spaceEvenly
+          : MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (ResponsiveWrapper.of(context).isSmallerThan(DESKTOP))
+                Container(
+                  width: 300,
+                  child: Image(
+                    image: AssetImage(image),
+                  ),
+                ),
+              SizedBox(height: 20),
+              Container(
+                width: 380,
+                child: detailProject(title, detail, tech),
+              ),
+              SizedBox(height: 10),
+              linkToProject(git, web),
+              if (ResponsiveWrapper.of(context).isSmallerThan(DESKTOP))
+                SizedBox(
+                  height: 50,
+                  width: 300,
+                  child: Divider(
+                    height: 0,
+                    thickness: 3,
+                    endIndent: 0,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+            ]),
+        if (ResponsiveWrapper.of(context).isLargerThan(TABLET))
+          Container(
+            width: 420,
+            child: Image(
+              image: AssetImage(image),
+            ),
+          )
+      ],
+    );
+  }
+
+  Row linkToProject(git, web) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (git != "")
+            IconButton(
+                icon: FaIcon(FontAwesomeIcons.github),
+                onPressed: () => _launchURL(git)),
+          IconButton(
+              icon: FaIcon(FontAwesomeIcons.mobileScreen),
+              onPressed: () => _launchURL(web)),
+        ]);
+  }
+
+  Text detailProject(String title, String detail, String tech) {
+    return Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+              text: '$title\n',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          TextSpan(text: detail, style: TextStyle(height: 2, fontSize: 18)),
+          if (tech != "")
+            TextSpan(
+                text: "\nTech Stack:  $tech",
+                style: TextStyle(height: 2, fontSize: 14)),
+        ],
+      ),
     );
   }
 
@@ -440,8 +584,8 @@ class _HomeState extends State<Home> {
 
   Widget miniMe() {
     return Container(
-      width: 370,
-      height: 310,
+      width: 380,
+      // height: 310,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -465,10 +609,9 @@ class _HomeState extends State<Home> {
             ),
           ),
           Text(
-            "My main areas of expertise include Flutter, Ethereum, Vue, Line Liff, Spring Boot",
+            "I'm interested in Flutter, Ethereum, and LINE LIFF. I'm also a digital trader and gamer on the blockchain.",
             style: TextStyle(fontSize: 24),
           ),
-          Spacer(),
         ],
       ),
     );

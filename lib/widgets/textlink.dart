@@ -33,7 +33,7 @@ class _TextLinkState extends State<TextLink> {
         child: Text(
           widget.text,
           style: TextStyle(
-              fontSize: 28,
+              fontSize: 14,
               fontWeight: FontWeight.bold,
               color: isHover ? Colors.blue[300] : Colors.grey[700]),
         ),
